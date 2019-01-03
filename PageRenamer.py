@@ -142,7 +142,9 @@ class MainWindow(wx.Frame):
 
     def UpdateNewFilenames(self):
         for i in range(0, len(self.pageNum)):
-            self.grid.SetCellValue(i, 2, self.fanzineNameTextbox.Value+self.fanzineIssuenumber.Value+self.grid.GetCellValue(i,1)+".jpg")
+            name=self.fanzineNameTextbox.Value+self.fanzineIssuenumber.Value+self.grid.GetCellValue(i,1)
+            self.grid.SetCellValue(i, 2, name+".jpg")
+            self.grid.SetCellBackgroundColour(i, 2, wx.Colour(255,230,230) if len(name) > 8 else wx.Colour(255,255,255))
 
     def OnFanzinenameOrIssueTextboxChanged(self, event):
         self.UpdateNewFilenames()
